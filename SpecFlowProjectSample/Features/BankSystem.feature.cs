@@ -20,8 +20,8 @@ namespace SpecFlowProjectSample.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Bank System API Testing")]
-    public partial class BankSystemAPITestingFeature
+    [NUnit.Framework.DescriptionAttribute("Bank API Testing")]
+    public partial class BankAPITestingFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -35,7 +35,7 @@ namespace SpecFlowProjectSample.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Bank System API Testing", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Bank API Testing", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,27 +74,10 @@ namespace SpecFlowProjectSample.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Create, delete, deposit, get, and withdraw from Account")]
-        [NUnit.Framework.TestCaseAttribute("1000", "\"Rajesh Mittal\"", "\"Ahmedabad, Gujarat\"", "200", "\"Account created successfully\"", "\"X123\"", "200", "\"Account X123 deleted successfully\"", "\"X123\"", "500", "200", "\"500$ deposited to Account X123 successfully\"", "\"X123\"", "200", "\"Account X123 details retrieved successfully\"", "1500", null)]
-        [NUnit.Framework.TestCaseAttribute("500", "\"John Doe\"", "\"New York, USA\"", "200", "\"Account created successfully\"", "\"Y456\"", "200", "\"Account Y456 deleted successfully\"", "\"Y456\"", "200", "200", "\"200$ deposited to Account Y456 successfully\"", "\"Y456\"", "200", "\"Account Y456 details retrieved successfully\"", "700", null)]
-        public virtual void CreateDeleteDepositGetAndWithdrawFromAccount(
-                    string initialBalance, 
-                    string accountName, 
-                    string address, 
-                    string responseCode, 
-                    string successMessage, 
-                    string accountNumberToDelete, 
-                    string deleteResponseCode, 
-                    string deleteSuccessMessage, 
-                    string accountNumberToDeposit, 
-                    string depositAmount, 
-                    string depositResponseCode, 
-                    string depositSuccessMessage, 
-                    string accountNumberToGet, 
-                    string getResponseCode, 
-                    string getSuccessMessage, 
-                    string updatedBalance, 
-                    string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Create Account")]
+        [NUnit.Framework.TestCaseAttribute("1000", "\"Rajesh Mittal\"", "\"Ahmedabad, Gujarat\"", "200", "\"Account created successfully\"", "\"X123\"", null)]
+        [NUnit.Framework.TestCaseAttribute("500", "\"John Doe\"", "\"New York, USA\"", "200", "\"Account created successfully\"", "\"Y456\"", null)]
+        public virtual void CreateAccount(string initialBalance, string accountName, string address, string responseCode, string successMessage, string accountNumberToDeposit, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
@@ -103,18 +86,8 @@ namespace SpecFlowProjectSample.Features
             argumentsOfScenario.Add("Address", address);
             argumentsOfScenario.Add("ResponseCode", responseCode);
             argumentsOfScenario.Add("SuccessMessage", successMessage);
-            argumentsOfScenario.Add("AccountNumberToDelete", accountNumberToDelete);
-            argumentsOfScenario.Add("DeleteResponseCode", deleteResponseCode);
-            argumentsOfScenario.Add("DeleteSuccessMessage", deleteSuccessMessage);
             argumentsOfScenario.Add("AccountNumberToDeposit", accountNumberToDeposit);
-            argumentsOfScenario.Add("DepositAmount", depositAmount);
-            argumentsOfScenario.Add("DepositResponseCode", depositResponseCode);
-            argumentsOfScenario.Add("DepositSuccessMessage", depositSuccessMessage);
-            argumentsOfScenario.Add("AccountNumberToGet", accountNumberToGet);
-            argumentsOfScenario.Add("GetResponseCode", getResponseCode);
-            argumentsOfScenario.Add("GetSuccessMessage", getSuccessMessage);
-            argumentsOfScenario.Add("UpdatedBalance", updatedBalance);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create, delete, deposit, get, and withdraw from Account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create Account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 3
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -162,47 +135,212 @@ namespace SpecFlowProjectSample.Features
 #line 12
         testRunner.And("Verify the account details are correctly returned in the JSON response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 14
-        testRunner.When(string.Format("GET endpoint triggered to get the account with AccountNumber {0}", accountNumberToGet), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 15
-        testRunner.Then(string.Format("Verify the response code is {0}", getResponseCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 16
-        testRunner.And("Verify no error is returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 17
-        testRunner.And(string.Format("Verify the success message {0}", getSuccessMessage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 18
-        testRunner.And("Verify the account details are correctly returned in the JSON response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 20
-        testRunner.When(string.Format("PUT endpoint triggered to deposit to AccountNumber {0} with Amount to deposit is " +
-                            "${1}", accountNumberToDeposit, depositAmount), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Create And Get Account Details")]
+        [NUnit.Framework.TestCaseAttribute("1000", "\"Rajesh Mittal\"", "\"Ahmedabad, Gujarat\"", "\"X123\"", "\"X123\"", "200", "\"Account X123 details retrieved successfully\"", null)]
+        [NUnit.Framework.TestCaseAttribute("500", "\"John Doe\"", "\"New York, USA\"", "\"Y456\"", "\"Y456\"", "200", "\"Account Y456 details retrieved successfully\"", null)]
+        public virtual void CreateAndGetAccountDetails(string initialBalance, string accountName, string address, string accountNumberToDeposit, string accountNumberToGet, string getResponseCode, string getSuccessMessage, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("InitialBalance", initialBalance);
+            argumentsOfScenario.Add("AccountName", accountName);
+            argumentsOfScenario.Add("Address", address);
+            argumentsOfScenario.Add("AccountNumberToDeposit", accountNumberToDeposit);
+            argumentsOfScenario.Add("AccountNumberToGet", accountNumberToGet);
+            argumentsOfScenario.Add("GetResponseCode", getResponseCode);
+            argumentsOfScenario.Add("GetSuccessMessage", getSuccessMessage);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create And Get Account Details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 21
-        testRunner.Then(string.Format("Verify the response code is {0}", depositResponseCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
 #line 22
-        testRunner.And("Verify no error is returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.Given(string.Format("Account Initial Balance is {0}", initialBalance), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 23
-        testRunner.And(string.Format("Verify the success message {0}", depositSuccessMessage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And(string.Format("Account name is \"{0}\"", accountName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 24
-        testRunner.And(string.Format("Veriy the updated balance is {0}", updatedBalance), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.And(string.Format("Address is \"{0}\"", address), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 25
+        testRunner.And(string.Format("Account is {0}", accountNumberToDeposit), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 26
-        testRunner.When(string.Format("DELETE endpoint triggered to delete the account with AccountNumber {0}", accountNumberToDelete), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+        testRunner.When("POST endpoint triggered to create new account with above details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 27
-        testRunner.Then(string.Format("Verify the response code is {0}", deleteResponseCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.And(string.Format("GET endpoint triggered to get the account with AccountNumber {0}", accountNumberToGet), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 28
-        testRunner.And("Verify no error is returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        testRunner.Then(string.Format("Verify the response code is {0}", getResponseCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 29
+        testRunner.And("Verify no error is returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 30
+        testRunner.And(string.Format("Verify the success message {0}", getSuccessMessage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 31
+        testRunner.And("Verify the account details are correctly returned in the JSON response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Create And update Account Balance")]
+        [NUnit.Framework.TestCaseAttribute("1000", "\"Rajesh Mittal\"", "\"Ahmedabad, Gujarat\"", "\"X123\"", "500", "200", "\"500$ deposited to Account X123 successfully\"", "1500", null)]
+        [NUnit.Framework.TestCaseAttribute("500", "\"John Doe\"", "\"New York, USA\"", "\"Y456\"", "200", "200", "\"200$ deposited to Account Y456 successfully\"", "700", null)]
+        public virtual void CreateAndUpdateAccountBalance(string initialBalance, string accountName, string address, string accountNumberToDeposit, string depositAmount, string depositResponseCode, string depositSuccessMessage, string updatedBalance, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("InitialBalance", initialBalance);
+            argumentsOfScenario.Add("AccountName", accountName);
+            argumentsOfScenario.Add("Address", address);
+            argumentsOfScenario.Add("AccountNumberToDeposit", accountNumberToDeposit);
+            argumentsOfScenario.Add("DepositAmount", depositAmount);
+            argumentsOfScenario.Add("DepositResponseCode", depositResponseCode);
+            argumentsOfScenario.Add("DepositSuccessMessage", depositSuccessMessage);
+            argumentsOfScenario.Add("UpdatedBalance", updatedBalance);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create And update Account Balance", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 37
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 38
+        testRunner.Given(string.Format("Account Initial Balance is {0}", initialBalance), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 39
+        testRunner.And(string.Format("Account name is \"{0}\"", accountName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 40
+        testRunner.And(string.Format("Address is \"{0}\"", address), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 41
+        testRunner.And(string.Format("Account is {0}", accountNumberToDeposit), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 42
+        testRunner.When("POST endpoint triggered to create new account with above details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 43
+        testRunner.And(string.Format("PUT endpoint triggered to deposit to AccountNumber {0} with Amount to deposit is " +
+                            "${1}", accountNumberToDeposit, depositAmount), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 44
+        testRunner.Then(string.Format("Verify the response code is {0}", depositResponseCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 45
+        testRunner.And("Verify no error is returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 46
+        testRunner.And(string.Format("Verify the success message {0}", depositSuccessMessage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 47
+        testRunner.And(string.Format("Veriy the updated balance is {0}", updatedBalance), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Create And Delete Account Details")]
+        [NUnit.Framework.TestCaseAttribute("1000", "\"Rajesh Mittal\"", "\"Ahmedabad, Gujarat\"", "\"X123\"", "200", "\"Account X123 deleted successfully\"", null)]
+        [NUnit.Framework.TestCaseAttribute("500", "\"John Doe\"", "\"New York, USA\"", "\"Y456\"", "200", "\"Account Y456 deleted successfully\"", null)]
+        public virtual void CreateAndDeleteAccountDetails(string initialBalance, string accountName, string address, string accountNumberToDeposit, string deleteResponseCode, string deleteSuccessMessage, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("InitialBalance", initialBalance);
+            argumentsOfScenario.Add("AccountName", accountName);
+            argumentsOfScenario.Add("Address", address);
+            argumentsOfScenario.Add("AccountNumberToDeposit", accountNumberToDeposit);
+            argumentsOfScenario.Add("DeleteResponseCode", deleteResponseCode);
+            argumentsOfScenario.Add("DeleteSuccessMessage", deleteSuccessMessage);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create And Delete Account Details", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 53
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 54
+     testRunner.Given(string.Format("Account Initial Balance is {0}", initialBalance), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 55
+        testRunner.And(string.Format("Account name is \"{0}\"", accountName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 56
+        testRunner.And(string.Format("Address is \"{0}\"", address), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 57
+        testRunner.And(string.Format("Account is {0}", accountNumberToDeposit), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 58
+        testRunner.When("POST endpoint triggered to create new account with above details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 59
+        testRunner.And(string.Format("DELETE endpoint triggered to delete the account with AccountNumber {0}", accountNumberToDeposit), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 60
+        testRunner.Then(string.Format("Verify the response code is {0}", deleteResponseCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 61
+        testRunner.And("Verify no error is returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 62
         testRunner.And(string.Format("Verify the success message {0}", deleteSuccessMessage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
